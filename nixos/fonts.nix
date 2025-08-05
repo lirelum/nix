@@ -7,9 +7,6 @@
       pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-cjk-serif
       pkgs.source-han-code-jp
-      pkgs.source-han-sans
-      pkgs.source-han-serif
-      pkgs.source-han-mono
     ];
   };
 }
