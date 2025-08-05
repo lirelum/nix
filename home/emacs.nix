@@ -11,5 +11,7 @@
     coreutils
     fd
     clang
+    bash-language-server
+    nil
   ];
 }
