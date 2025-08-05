@@ -6,8 +6,12 @@
     defaultLocale = "ja_JP.UTF-8";
     inputMethod = {
       enable = true;
-      type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [mozc-ut];
+      type = "fcitx5";
+      fcitx5.addons = [
+        pkgs.fcitx5-mozc-ut
+        pkgs.fcitx5-gtk
+      ];
     };
   };
+
 }
