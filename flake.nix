@@ -3,24 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    emacs-overlay.url ="github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = inputs @ { self, nixpkgs, ... }:
-  let
-    inherit (self) outputs;
-    specialArgs = {inherit inputs outputs;};
-  in {
-    nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./nixos
-        ./miku
-      ];
-      inherit specialArgs;
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      treefmt-nix,
+      ...
+    }:
+    let
+      inherit (self) outputs;
+      specialArgs = { inherit inputs outputs; };
+      systems = [ "x86_64-linux" ];
+      eachSystem = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    in
+    {
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check;
+      });
+      nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./nixos
+          ./miku
+        ];
+        inherit specialArgs;
+      };
     };
-  };
 }

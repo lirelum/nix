@@ -1,4 +1,5 @@
-{inputs, outputs, ...}: {
+{ inputs, outputs, ... }:
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
     {
@@ -6,7 +7,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users.autumn = ../home;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = { inherit inputs outputs; };
       };
     }
   ];

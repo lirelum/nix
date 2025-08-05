@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = [
     pkgs.thunderbird
     pkgs.nextcloud-client
