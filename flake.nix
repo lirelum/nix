@@ -28,7 +28,16 @@
     {
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
       checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check;
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
+      devShells = eachSystem (pkgs: {
+        default = pkgs.mkShell {
+          name = "nix tools";
+          buildInputs = [
+            pkgs.nixfmt
+            pkgs.nil
+          ];
+        };
       });
       nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
         modules = [
