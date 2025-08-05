@@ -9,7 +9,7 @@
     pkgs.gnomeExtensions.blur-my-shell
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.applications-menu
-    pkgs.gnomeExtensions.kimpanel
+    pkgs.gnomeExtensions.fullscreen-avoider
     pkgs.gnome-tweaks
     pkgs.seahorse
   ];
