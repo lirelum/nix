@@ -31,7 +31,7 @@
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
       devShells = eachSystem (pkgs: {
-        default = pkgs.mkShell {
+        default = pkgs.mkShellNoCC {
           name = "nix tools";
           buildInputs = [
             pkgs.nixfmt
