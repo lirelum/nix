@@ -13,5 +13,6 @@
     clang
     bash-language-server
     nil
+    cmigemo
   ];
 }
