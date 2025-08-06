@@ -46,5 +46,12 @@
         ];
         inherit specialArgs;
       };
+      nixosConfigurations.zundamon = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./nixos
+          ./zundamon
+        ];
+        inherit specialArgs;
+      };
     };
 }
