@@ -17,8 +17,6 @@
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
-    "usb_storage"
-    "sd_mod"
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
@@ -43,7 +41,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/d34cac2b-b102-4901-88c7-f009163c3aca"; }
+    { device = "/dev/disk/by-uuid/3395fcd0-bb92-4aad-afd4-bef636a41b70"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
