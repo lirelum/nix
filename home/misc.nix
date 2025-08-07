@@ -7,5 +7,6 @@
     pkgs.gnucash
     pkgs.vesktop
     pkgs.anki
+    pkgs.jellyfin-media-player
   ];
 }
