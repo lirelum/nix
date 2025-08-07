@@ -10,6 +10,7 @@
     pkgs.gnomeExtensions.appindicator
     pkgs.gnomeExtensions.applications-menu
     pkgs.gnomeExtensions.fullscreen-avoider
+    pkgs.gnomeExtensions.kimpanel
     pkgs.gnome-tweaks
     pkgs.seahorse
   ];
