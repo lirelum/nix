@@ -10,5 +10,6 @@
     ./users.nix
     ./fonts.nix
     ./home.nix
+    ./steam.nix
   ];
 }
